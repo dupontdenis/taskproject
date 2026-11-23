@@ -1,0 +1,13 @@
+{% extends 'task/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<h1 class="my-4">Confirm !</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'task:task-list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

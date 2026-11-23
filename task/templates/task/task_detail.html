@@ -1,0 +1,12 @@
+{% extends 'task/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+<h1 class="my-4">{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p>Completed: {{ task.completed }}</p>
+<p>Due Date: {{ task.due_date }}</p>  <!-- Display the new field -->
+<a href="{% url 'task:task-list' %}" class="btn btn-secondary mt-4">Back to Task List</a>
+{% endblock %}

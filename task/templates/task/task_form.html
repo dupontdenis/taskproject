@@ -1,0 +1,14 @@
+{% extends 'task/layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% if form.instance.pk %}Update{% else %}Create{% endif %} Task{% endblock %}
+
+{% block content %}
+<h1 class="my-4">{% if form.instance.pk %}Update{% else %}Create{% endif %} Task</h1>
+<form action="{% if form.instance.pk %}{% url 'task:task-update' form.instance.pk %}{% else %}{% url 'task:task-create' %}{% endif %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-success">{% if form.instance.pk %}Update{% else %}Create{% endif %} Task</button>
+</form>
+<a href="{% url 'task:task-list' %}" class="btn btn-secondary mt-4">Back to Task List</a>
+{% endblock %}

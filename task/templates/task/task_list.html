@@ -1,0 +1,27 @@
+{% extends 'task/layout.html' %} 
+{% load django_bootstrap5 %}
+
+{% block title %}Tasks{%endblock %} 
+
+{% block content %}
+<h1 class="my-4">Tasks</h1>
+<a href="{% url 'task:task-create' %}" class="btn btn-primary mt-4">Add Task</a>
+<div class="list-group">
+  {% for task in task_list %}
+  <div class="list-group-item">
+    <h5>{{ task.title }}</h5>
+    <div class="btn-group" role="group">
+      <a href="{% url 'task:task-detail' pk=task.id %}" class="btn btn-info"
+        >Detail</a
+      >
+      <a href="{% url 'task:task-update' pk=task.id %}" class="btn btn-warning"
+        >Update</a
+      >
+      <a href="{% url 'task:task-delete' pk=task.id %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
